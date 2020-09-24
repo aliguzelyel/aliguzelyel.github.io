@@ -1,7 +1,7 @@
 body{
 	background-color: #f4f4f4;
 
-	color:#333;
+	color:#1C1D22;
 	font-family: Times New Roman, Helvetica, sans-serif;
 	font-size:16px;
 	line-height: 1.6em;
@@ -14,21 +14,21 @@ body{
 	overflow:hidden;
 }
 .button{
-	background-color: #333;
-	color: #fff;
+	background-color: #6C8EAD;
+	color: #EDF1FB;
 	padding: 10px 15px;
 	border:none;
 	text-decoration: none;
 }
 
 .button:hover {
-	background-color: red;
-	color: #fff;
+	background-color: #FF8C42;
+	color: #EDF1FB;
 }
 
 .button-project:hover {
-	background-color: red;
-	color: #fff;
+	background-color: #FF8C42;
+	color: #EDF1FB;
 	padding: 20px; 
 }
 
@@ -37,13 +37,25 @@ body{
 }
 
 #main-header{
-	background-color: #17b;
-	color: #fff;
+	background-color: #642432;
+	color: #EDF1FB;
 	padding-left: 4%;
+	text-align: center;
+	padding-right: 50px;
+	font-size: 18px;
+}
+#main-header:hover{
+	color: #FBBE9D;
+}
+#main-header:hover:after{
+	content: url('../images/bodyshot.png');
+	display: block;
+	position: relative;
+	
 }
 #navbar{
-	background-color: #333;
-	color: #fff;
+	background-color: #A23E48;
+	color: #EDF1FB;
 	}
 
 }
@@ -58,33 +70,47 @@ body{
 	float:left;
 	width:25%;
 	text-align: center;
-	padding: 10px;
+	
+	padding-bottom: 13px;
 
 	box-sizing: border-box;
 
 }
 #navbar a{
-	color: #fff;
+	color: #EDF1FB;
 	text-decoration: none;
 	font-size: 18px;
-	padding-right: 15px;
+	padding: 10px 25px;
 	text-align: center;
 
+}
+#navbar a:hover{
+	background-color: #FF8C42;
+	color: #000;
 }
 
 #showcase{
-	background-image: url('../images/showcase.jpg');
-	background-position: center right;
-	min-height: 300px;
-	margin-bottom: 30px;
+	background-image: url('../images/looking_at_my_code,_are_we.png');
+	background-position: center left;
+	min-height: 400px;
+	margin-bottom: 20px;
 	text-align: center;
+	
+
 
 }
 #showcase h1{
-	color:#000;
-	font-size:50px;
+	font-family: Lucida Console;
+	color:#FBBE9D;
+	font-size:55px;
 	line-height: 1.6em;
-	padding-top: 30px;
+	padding-top: 90px;
+	word-spacing: 30px;
+
+
+}
+#showcase h1:hover{
+	color: #F4927D;
 
 }
 #main{
@@ -96,15 +122,15 @@ body{
 #sidebar{
 	float: right;
 	width: 30%;
-	background: #333;
-	color:#fff;
+	background: #6C8EAD;
+	color:#EDF1FB;
 	padding:10px;
 	box-sizing: border-box;
 }
 
 #main-footer{
-	background: #333;
-	color: #fff;
+	background: #642432;
+	color: #EDF1FB;
 	text-align: center;
 	padding: 10px;
 	margin-top: 40px;
@@ -145,8 +171,8 @@ body{
 }
 
 #projects{
-	background-color: #534;
-	color: #fff;
+	background-color: #A23E48;
+	color: #EDF1FB;
 	padding: 20px 0;
 
 }
@@ -167,7 +193,7 @@ body{
 
 
 #projects a{
-	color: #fff;
+	color: #EDF1FB;
 	text-decoration: none;
 	font-size: 1.6em;
 	padding: 15px;
