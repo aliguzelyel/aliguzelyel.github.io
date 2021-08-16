@@ -48,7 +48,7 @@ body{
 	color: #FBBE9D;
 }
 #main-header:hover:after{
-	content: url('../images/bodyshot.png');
+	content: url('../images/headshot_2_small.png');
 	display: block;
 	position: relative;
 	
