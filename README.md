@@ -1,4 +1,4 @@
-# aliguzelyel.github.io
+# Personal Website: aliguzelyel.github.io
 
 I created this website using HTML and CSS. Included in it are links to my Resume, LinkedIn page, GitHub page and projects. I have also added my photo and an email-me button.
 
@@ -22,4 +22,4 @@ Top-to-bottom description:
 
 8) There is a 'email-me' button on the right side as you can see. Clicking it will give you the option to email me directly.
 
-I tried checking accessibility: tab works well, links have their name, 
+I tried checking accessibility: tab works well, links have their name. The photo does not have an alternate-name though. 
