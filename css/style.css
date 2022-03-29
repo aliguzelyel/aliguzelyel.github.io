@@ -1,6 +1,5 @@
 body{
 	background-color: #f4f4f4;
-
 	color:#1C1D22;
 	font-family: Times New Roman, Helvetica, sans-serif;
 	font-size:16px;
@@ -46,19 +45,17 @@ body{
 }
 #main-header:hover{
 	color: #FBBE9D;
-}
+}/*
 #main-header:hover:after{
 	content: url('../images/headshot_2_small.png');
 	display: block;
-	position: relative;
-	
-}
+	position: relative;	
+}*/ /*removed*/
 #navbar{
 	background-color: #A23E48;
 	color: #EDF1FB;
-	}
-
 }
+
 #navbar ul{
 	padding:0;
 	list-style: none;
@@ -110,7 +107,7 @@ body{
 
 }
 #showcase h1:hover{
-	color: #F4927D;
+	/*color: #F4927D;*/ /*removed*/
 
 }
 #main{
@@ -165,7 +162,6 @@ body{
 	text-align: center;
 	padding: 20px 0;
 	padding-top: 10px;
-
 	font-size: 2em;
 
 }
