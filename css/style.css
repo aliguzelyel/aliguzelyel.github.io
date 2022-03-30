@@ -1,10 +1,16 @@
 body{
 	background-color: #f4f4f4;
+
 	color:#1C1D22;
-	font-family: Times New Roman, Helvetica, sans-serif;
+	font-family: 'Raleway',Times New Roman, Helvetica, sans-serif;
 	font-size:16px;
 	line-height: 1.6em;
 	margin:0;
+}
+
+h3{
+	font-size: 24px;
+	font-family: 'Raleway', sans-serif;
 }
 
 .container{
@@ -37,6 +43,8 @@ body{
 
 #main-header{
 	background-color: #642432;
+	/*color: #EDF1FB;
+	*/
 	color: #EDF1FB;
 	padding-left: 4%;
 	text-align: center;
@@ -45,12 +53,16 @@ body{
 }
 #main-header:hover{
 	color: #FBBE9D;
-}/*
+	/*color: #E4C3AD;*/
+}
+/*
 #main-header:hover:after{
 	content: url('../images/headshot_2_small.png');
 	display: block;
-	position: relative;	
-}*/ /*removed*/
+	position: relative;
+		
+}
+*/
 #navbar{
 	background-color: #A23E48;
 	color: #EDF1FB;
@@ -75,8 +87,9 @@ body{
 }
 #navbar a{
 	color: #EDF1FB;
+	font-family: 'Raleway', Lucida Console;
 	text-decoration: none;
-	font-size: 18px;
+	font-size: 16px;
 	padding: 10px 25px;
 	text-align: center;
 
@@ -88,7 +101,8 @@ body{
 
 #showcase{
 	background-image: url('../images/looking_at_my_code,_are_we.png');
-	background-position: center left;
+	/*opacity: 0.90;*/
+	background-position: -9% 36%;
 	min-height: 400px;
 	margin-bottom: 20px;
 	text-align: center;
@@ -96,19 +110,19 @@ body{
 
 
 }
-#showcase h1{
-	font-family: Lucida Console;
+#showcase h2{
+	font-family: 'Raleway', Lucida Console;
 	color:#FBBE9D;
 	font-size:55px;
 	line-height: 1.6em;
 	padding-top: 90px;
 	word-spacing: 30px;
-
+	text-shadow: #edb393 0px 0px 1px;
+	-webkit-font-smoothing: antialiased;
 
 }
-#showcase h1:hover{
-	/*color: #F4927D;*/ /*removed*/
-
+#showcase h2:hover{
+	/*color: #F4927D;*/
 }
 #main{
 	float: left;
@@ -145,6 +159,8 @@ body{
 }
 
 .fix-me{
+	font-family: 'Raleway', Lucida Console;
+	font-size: 14px;
 	position: fixed;
 	top:400px;
 	right:0;
