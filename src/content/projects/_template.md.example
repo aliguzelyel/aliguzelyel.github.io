@@ -1,0 +1,17 @@
+---
+title: Project title
+summary: One-line summary shown on cards (max 160 characters).
+repo: https://github.com/you/repo
+demo: https://example.com
+date: 2026-01-15
+status: wip # shipped | wip | archived
+tags: [web]
+featured: false
+# cover: my-cover.png  # optional, file goes in public/projects/
+---
+
+<!-- Keep the body simple: a few short bullets (3-6). Keywords live in tags, links live in frontmatter. -->
+
+- What the project does.
+- One thing that made it interesting or hard.
+- Result, outcome or current status.

@@ -1,0 +1,26 @@
+{
+  "name": "Your Name",
+  "role": "Your role",
+  "location": "City, Country",
+  "tagline": "One sentence that describes what you do.",
+  "description": "Default meta description for search engines and social cards.",
+  "email": "you@example.com",
+  "github": "https://github.com/your-handle",
+  "linkedin": "https://www.linkedin.com/in/your-handle",
+  "facts": [
+    {
+      "label": "Based in",
+      "value": "City, Country"
+    }
+  ],
+  "education": [
+    {
+      "id": "2020-2024-example-uni",
+      "degree": "B.Sc. Example",
+      "org": "Example University",
+      "start": "2020",
+      "end": "2024"
+    }
+  ],
+  "skills": ["TypeScript", "Python"]
+}

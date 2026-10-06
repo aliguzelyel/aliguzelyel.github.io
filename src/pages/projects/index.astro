@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Reveal from '../../components/Reveal.astro';
+import ProjectBrowser from '../../components/ProjectBrowser.astro';
+import { site } from '../../data/site';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<BaseLayout title="Projects" description={`Selected projects by ${site.name}.`}>
+  <section class="section-pad border-b">
+    <div class="container-x">
+      <Reveal>
+        <p class="eyebrow">Index / Projects</p>
+      </Reveal>
+      <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-12">
+        <div class="md:col-span-7">
+          <Reveal delay={60}>
+            <h1 class="text-4xl font-semibold md:text-6xl">Projects</h1>
+          </Reveal>
+        </div>
+        <div class="flex items-end md:col-span-4 md:col-start-9">
+          <Reveal delay={120}>
+            <div>
+              <p class="text-ink-muted">
+                Keywords, highlights and source code for each project.
+              </p>
+              <p class="mt-2 hidden text-sm text-ink-muted md:block">
+                Hover or focus a project to preview its details.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    projects.length === 0 ? (
+      <section class="section-pad">
+        <div class="container-x">
+          <p class="text-ink-muted">
+            No projects published yet. See the README to add one.
+          </p>
+        </div>
+      </section>
+    ) : (
+      <section class="section-pad">
+        <div class="container-x">
+          <Reveal>
+            <ProjectBrowser projects={projects} level="h2" />
+          </Reveal>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

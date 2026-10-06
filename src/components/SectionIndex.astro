@@ -1,0 +1,15 @@
+---
+interface Props {
+  index: string;
+  label: string;
+  class?: string;
+}
+
+const { index, label, class: className = '' } = Astro.props;
+---
+
+<p class:list={['eyebrow flex items-baseline gap-3', className]}>
+  <span class="text-base font-medium text-accent">{index}</span>
+  <span aria-hidden="true">/</span>
+  <span>{label}</span>
+</p>

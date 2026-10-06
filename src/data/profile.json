@@ -1,0 +1,26 @@
+{
+  "name": "Ali Guzelyel",
+  "role": "ML Engineer",
+  "location": "Chicago, IL",
+  "tagline": "PhD in computer science focused on machine learning, LLMs and large-scale data. I build ML systems end to end.",
+  "description": "Portfolio of Ali Guzelyel, ML engineer with a PhD in computer science focused on machine learning, LLMs and large-scale data.",
+  "email": null,
+  "github": "https://github.com/Guz-Ali",
+  "linkedin": "https://www.linkedin.com/in/ali-guzelyel/",
+  "facts": [
+    {
+      "label": "Based in",
+      "value": "Chicago, IL (open to relocate)"
+    },
+    {
+      "label": "Focus",
+      "value": "ML engineering"
+    },
+    {
+      "label": "Research",
+      "value": "Machine learning, LLMs, large-scale data"
+    }
+  ],
+  "education": [],
+  "skills": []
+}

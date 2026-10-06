@@ -1,0 +1,25 @@
+[
+  {
+    "id": "2024-acme-corp",
+    "role": "Software Engineer Intern",
+    "org": "Example Corp",
+    "start": "2024-06",
+    "end": "2024-08",
+    "location": "City, Country",
+    "bullets": [
+      "Did something measurable and specific.",
+      "Shipped a feature used by real users."
+    ],
+    "tags": ["TypeScript", "API"]
+  },
+  {
+    "id": "2023-example-uni",
+    "role": "Teaching Assistant",
+    "org": "Example University",
+    "start": "2023-01",
+    "end": null,
+    "location": "City, Country",
+    "bullets": ["Ran weekly labs for 30 students."],
+    "tags": ["Mentoring"]
+  }
+]

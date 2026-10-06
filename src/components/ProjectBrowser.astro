@@ -1,0 +1,443 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import Prose from './Prose.astro';
+import Tag from './Tag.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+  level?: 'h2' | 'h3';
+}
+
+const { projects, level = 'h3' } = Astro.props;
+const Heading = level;
+
+const items = await Promise.all(
+  projects.map(async (project, index) => {
+    const { Content } = await render(project);
+    return {
+      project,
+      index,
+      slug: project.id,
+      Content,
+      year: project.data.date.getFullYear(),
+      showStatus: project.data.status !== 'shipped',
+    };
+  }),
+);
+const first = items[0];
+---
+
+<div class="browser" data-project-browser data-active={first?.slug}>
+  <ol class="index" aria-label="Project index">
+    {
+      items.map(({ project, index, slug, year }) => (
+        <li>
+          <a
+            href={`#project-${slug}`}
+            data-project-link={slug}
+            aria-current={index === 0 ? 'true' : undefined}
+            class="row"
+          >
+            <span class="num">{String(index + 1).padStart(2, '0')}</span>
+            <span class="body">
+              <span class="title">{project.data.title}</span>
+              <span class="keywords">{project.data.tags.join(' · ')}</span>
+            </span>
+            <span class="year">{year}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="stage" data-stage>
+    {
+      items.map(({ project, slug, year, showStatus, Content }, index) => (
+        <article
+          id={`project-${slug}`}
+          data-project-panel={slug}
+          class:list={['panel', index === 0 && 'is-active']}
+        >
+          <header class="panel-head">
+            <Heading class="panel-title">{project.data.title}</Heading>
+            <p class="panel-meta">
+              <span>{year}</span>
+              {showStatus && <span>{project.data.status}</span>}
+            </p>
+          </header>
+          <p class="panel-summary">{project.data.summary}</p>
+          <div class="panel-body">
+            <Prose>
+              <Content />
+            </Prose>
+          </div>
+          {project.data.tags.length > 0 && (
+            <ul class="panel-tags">
+              {project.data.tags.map((tag) => (
+                <li>
+                  <Tag>{tag}</Tag>
+                </li>
+              ))}
+            </ul>
+          )}
+          {(project.data.repo || project.data.demo) && (
+            <div class="panel-links">
+              {project.data.demo && (
+                <a
+                  href={project.data.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-primary"
+                >
+                  Live demo
+                  <span aria-hidden="true">↗</span>
+                </a>
+              )}
+              {project.data.repo && (
+                <a
+                  href={project.data.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-secondary"
+                >
+                  GitHub
+                  <span aria-hidden="true">↗</span>
+                </a>
+              )}
+            </div>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    document
+      .querySelectorAll('[data-project-browser]')
+      .forEach(function (root) {
+        var stage = root.querySelector('[data-stage]');
+        var links = Array.from(root.querySelectorAll('[data-project-link]'));
+        var panels = Array.from(root.querySelectorAll('[data-project-panel]'));
+
+        // Reserve the tallest panel's height so swapping never changes the
+        // page layout (no scroll jumps, no hover feedback loops).
+        function lockStageHeight() {
+          if (!stage) return;
+          if (!window.matchMedia('(min-width: 768px)').matches) {
+            stage.style.minHeight = '';
+            return;
+          }
+          stage.style.minHeight = '';
+          var max = 0;
+          panels.forEach(function (panel) {
+            var prev = panel.style.display;
+            panel.style.display = 'block';
+            max = Math.max(max, panel.offsetHeight);
+            panel.style.display = prev;
+          });
+          if (max) stage.style.minHeight = max + 'px';
+        }
+
+        function setActive(slug) {
+          if (root.getAttribute('data-active') === slug) return;
+          root.setAttribute('data-active', slug);
+          var target = null;
+          links.forEach(function (link) {
+            if (link.getAttribute('data-project-link') === slug)
+              link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
+          });
+          panels.forEach(function (panel) {
+            var on = panel.getAttribute('data-project-panel') === slug;
+            panel.classList.remove('is-entering');
+            panel.classList.toggle('is-active', on);
+            if (on) target = panel;
+          });
+          if (target) {
+            void target.offsetWidth;
+            target.classList.add('is-entering');
+          }
+        }
+
+        lockStageHeight();
+        if (document.fonts && document.fonts.ready)
+          document.fonts.ready.then(lockStageHeight);
+        window.addEventListener('resize', lockStageHeight);
+
+        links.forEach(function (link) {
+          var slug = link.getAttribute('data-project-link');
+          link.addEventListener('mouseenter', function () {
+            setActive(slug);
+          });
+          link.addEventListener('focus', function () {
+            setActive(slug);
+          });
+          link.addEventListener('click', function (event) {
+            // At md+ only one panel is visible, so jump navigation makes no
+            // sense; below md all panels are stacked and anchors work natively.
+            if (window.matchMedia('(min-width: 768px)').matches) {
+              event.preventDefault();
+              setActive(slug);
+            }
+          });
+          link.addEventListener('keydown', function (event) {
+            if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+            event.preventDefault();
+            var i = links.indexOf(link);
+            var next = links[i + (event.key === 'ArrowDown' ? 1 : -1)];
+            if (next) next.focus();
+          });
+        });
+      });
+  })();
+</script>
+
+<style>
+  .browser {
+    position: relative;
+  }
+
+  /* Mobile and no-JS: the index is redundant, panels stack as a list. */
+  .index {
+    display: none;
+    list-style: none;
+  }
+
+  .stage {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .panel {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+    padding: 1.5rem;
+  }
+
+  .panel:target {
+    border-color: var(--color-accent);
+  }
+
+  .panel.is-entering {
+    animation: stage-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes stage-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-line);
+    padding-bottom: 0.9rem;
+  }
+
+  .panel-title {
+    min-width: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+  }
+
+  .panel-meta {
+    display: flex;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-ink-muted);
+  }
+
+  .panel-summary {
+    margin-top: 1rem;
+    max-width: 65ch;
+    line-height: 1.65;
+  }
+
+  .panel-body {
+    margin-top: 1.25rem;
+    max-width: 65ch;
+  }
+
+  .panel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+  }
+
+  .panel-tags li {
+    display: contents;
+  }
+
+  .panel-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .link-primary,
+  .link-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition:
+      background-color 0.15s ease-out,
+      border-color 0.15s ease-out,
+      color 0.15s ease-out;
+  }
+
+  .link-primary {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .link-primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .link-secondary {
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+    color: var(--color-ink);
+  }
+
+  .link-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0.4rem 1rem;
+    padding: 0.9rem 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.15s ease-out;
+  }
+
+  .row:hover {
+    background-color: var(--color-accent-soft);
+  }
+
+  .num,
+  .year {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    transition: color 0.15s ease-out;
+  }
+
+  .title {
+    display: block;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+    transition: color 0.15s ease-out;
+  }
+
+  .keywords {
+    display: block;
+    margin-top: 0.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-ink-muted);
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+  }
+
+  .row:hover .title,
+  .row[aria-current='true'] .title,
+  .row[aria-current='true'] .num {
+    color: var(--color-accent);
+  }
+
+  @media (min-width: 640px) {
+    .panel {
+      padding: 2rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .browser {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .index {
+      display: block;
+      grid-column: span 5;
+      position: sticky;
+      top: 6rem;
+      border-top: 1px solid var(--color-line);
+      /* Long titles / many projects: keep every row reachable. */
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;
+    }
+
+    .index li {
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    /* Narrow index: the name wins the space, tags live in the stage. */
+    .keywords {
+      display: none;
+    }
+
+    .stage {
+      grid-column: 7 / -1;
+    }
+
+    /* With JS only the previewed panel is on stage. */
+    :global(html.has-js) .panel {
+      display: none;
+    }
+
+    :global(html.has-js) .panel.is-active {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .keywords {
+      display: block;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .panel.is-entering {
+      animation: none;
+    }
+  }
+</style>

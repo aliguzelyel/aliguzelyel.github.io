@@ -1,0 +1,174 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --color-canvas: #fbfbfa;
+  --color-surface: #ffffff;
+  --color-ink: #17171a;
+  --color-ink-muted: #5b5b66;
+  --color-line: #e7e7e4;
+  --color-accent: #6c2e3b;
+  --color-accent-hover: #542430;
+  --color-accent-soft: #f6eff0;
+  --color-warm: #e8873c;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-soft);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+  }
+}
+
+@layer components {
+  .container-x {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 72rem;
+    padding-inline: 1.5rem;
+  }
+
+  .section-pad {
+    padding-block: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-pad {
+      padding-block: 6rem;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-ink-muted);
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Scroll reveal (only active when JS is available, .has-js)          */
+/* ---------------------------------------------------------------- */
+
+.has-js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.has-js .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------------- */
+/* Disclosure summaries (mobile nav menu)                             */
+/* ---------------------------------------------------------------- */
+
+summary {
+  list-style: none;
+}
+
+/* Parallax-lite (progressive enhancement, CSS scroll-driven only) */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .parallax-y {
+      animation: parallax-y linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 60vh;
+    }
+  }
+}
+
+@keyframes parallax-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .has-js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .parallax-y {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Print (resume page)                                               */
+/* ---------------------------------------------------------------- */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}

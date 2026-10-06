@@ -1,0 +1,42 @@
+{
+  "name": "aliguzelyel-github-io",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:links": "node scripts/check-links.mjs",
+    "check:qa": "node scripts/check-qa.mjs",
+    "test": "node --test --test-concurrency=1 \"tests/*.test.mjs\"",
+    "test:ui": "node --test --test-concurrency=1 tests/ui.test.mjs",
+    "test:visual": "node --test --test-concurrency=1 tests/visual.test.mjs",
+    "new:project": "node scripts/new-project.mjs",
+    "new:job": "node scripts/new-job.mjs",
+    "import": "node scripts/import-content.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.4.1",
+    "@fontsource-variable/inter": "^5.2.6",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.14",
+    "astro": "^5.13.5",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "eslint": "^9.37.0",
+    "eslint-plugin-astro": "^1.3.1",
+    "globals": "^16.5.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript-eslint": "^8.71.0"
+  }
+}

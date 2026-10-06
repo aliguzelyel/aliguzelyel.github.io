@@ -1,0 +1,90 @@
+---
+import { site } from '../data/site';
+import Button from './Button.astro';
+import IconMail from './icons/Mail.astro';
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/resume', label: 'Resume' },
+  { href: '/#contact', label: 'Contact' },
+];
+
+// Static build paths carry a trailing slash ('/projects/'), nav hrefs do not.
+const normalize = (value: string) => {
+  const base = value.split('#')[0];
+  return base.length > 1 ? base.replace(/\/+$/, '') : base;
+};
+const isCurrent = (href: string) =>
+  !href.includes('#') && normalize(Astro.url.pathname) === normalize(href);
+---
+
+<header
+  class="no-print sticky top-0 z-50 border-b border-line bg-surface/80 backdrop-blur"
+>
+  <div class="container-x flex h-16 items-center justify-between gap-4">
+    <a href="/" class="shrink-0 font-semibold tracking-tight hover:text-accent">
+      {site.name}
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Main">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class="rounded-full px-3 py-2 text-sm text-ink-muted transition-colors duration-150 hover:bg-accent-soft hover:text-accent"
+            aria-current={isCurrent(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      {
+        site.email && (
+          <Button
+            href={`mailto:${site.email}`}
+            class="ml-2 hidden sm:inline-flex"
+          >
+            <IconMail class="size-4" />
+            Email me
+          </Button>
+        )
+      }
+    </nav>
+
+    <details class="relative md:hidden" data-nav-menu>
+      <summary
+        class="inline-flex cursor-pointer list-none items-center rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium"
+      >
+        Menu
+      </summary>
+      <nav
+        class="absolute right-0 top-full mt-2 w-56 rounded-xl border border-line bg-surface p-2 shadow-[0_1px_2px_rgb(0_0_0/0.04)]"
+        aria-label="Main"
+      >
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              class="block rounded-lg px-3 py-2.5 text-sm text-ink-muted transition-colors hover:bg-accent-soft hover:text-accent"
+              aria-current={isCurrent(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        {
+          site.email && (
+            <a
+              href={`mailto:${site.email}`}
+              class="mt-1 flex items-center gap-2 rounded-full bg-accent px-3 py-2.5 text-sm font-medium text-white"
+            >
+              <IconMail class="size-4" />
+              Email me
+            </a>
+          )
+        }
+      </nav>
+    </details>
+  </div>
+</header>

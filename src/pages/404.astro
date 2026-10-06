@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Reveal from '../components/Reveal.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout title="Page not found" description="This page does not exist.">
+  <section class="section-pad">
+    <div class="container-x grid grid-cols-1 gap-8 md:grid-cols-12">
+      <div class="md:col-span-7">
+        <Reveal>
+          <p class="eyebrow">404 / Not found</p>
+        </Reveal>
+        <Reveal delay={60}>
+          <h1 class="mt-6 text-4xl font-semibold md:text-6xl">
+            This page doesn’t exist.
+          </h1>
+        </Reveal>
+        <Reveal delay={120}>
+          <p class="mt-5 max-w-[46ch] text-ink-muted">
+            The link may be outdated, or the page was moved.
+          </p>
+        </Reveal>
+        <Reveal delay={180}>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <Button href="/">Back home</Button>
+            <Button href="/projects" variant="secondary">View projects</Button>
+          </div>
+        </Reveal>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

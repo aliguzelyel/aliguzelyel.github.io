@@ -1,0 +1,184 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Reveal from '../components/Reveal.astro';
+import SectionIndex from '../components/SectionIndex.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ProjectBrowser from '../components/ProjectBrowser.astro';
+import CvContent from '../components/CvContent.astro';
+import Button from '../components/Button.astro';
+import IconGithub from '../components/icons/Github.astro';
+import IconLinkedin from '../components/icons/Linkedin.astro';
+import IconMail from '../components/icons/Mail.astro';
+import { site } from '../data/site';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 5);
+---
+
+<BaseLayout>
+  <Hero />
+
+  <!-- 02 - Resume -->
+  <section id="resume" class="section-pad border-b border-line">
+    <div class="container-x grid grid-cols-1 gap-10 md:grid-cols-12">
+      <div class="md:col-span-3">
+        <div class="md:sticky md:top-28">
+          <Reveal>
+            <SectionIndex index="02" label="Resume" />
+          </Reveal>
+          <Reveal delay={60}>
+            <div class="mt-6">
+              <SectionHeading>Resume</SectionHeading>
+            </div>
+            <p class="mt-4 text-sm text-ink-muted">
+              {site.role}{site.location && ` · ${site.location}`}
+            </p>
+          </Reveal>
+          <Reveal delay={120}>
+            <div class="mt-5 flex flex-wrap items-center gap-1">
+              {
+                site.email && (
+                  <a
+                    href={`mailto:${site.email}`}
+                    class="inline-flex size-11 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-accent-soft hover:text-accent"
+                    aria-label="Send an email"
+                  >
+                    <IconMail />
+                  </a>
+                )
+              }
+              {
+                site.github && (
+                  <a
+                    href={site.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex size-11 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-accent-soft hover:text-accent"
+                    aria-label="GitHub profile (opens in a new tab)"
+                  >
+                    <IconGithub />
+                  </a>
+                )
+              }
+              {
+                site.linkedin && (
+                  <a
+                    href={site.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex size-11 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-accent-soft hover:text-accent"
+                    aria-label="LinkedIn profile (opens in a new tab)"
+                  >
+                    <IconLinkedin />
+                  </a>
+                )
+              }
+            </div>
+            <div class="mt-6">
+              <Button href="/resume" variant="ghost">Full resume →</Button>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+      <div class="space-y-14 md:col-span-8 md:col-start-5">
+        <CvContent />
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 - Selected projects -->
+  <section id="projects" class="section-pad border-b border-line">
+    <div class="container-x">
+      <Reveal>
+        <SectionIndex index="03" label="Selected work" />
+      </Reveal>
+      <div class="mt-8 flex flex-wrap items-end justify-between gap-6">
+        <Reveal delay={60}>
+          <SectionHeading>Selected projects</SectionHeading>
+        </Reveal>
+        {
+          projects.length > 0 && (
+            <Reveal delay={120}>
+              <Button href="/projects" variant="ghost">
+                All projects →
+              </Button>
+            </Reveal>
+          )
+        }
+      </div>
+
+      {
+        projects.length === 0 ? (
+          <Reveal delay={120}>
+            <p class="mt-10 text-ink-muted">
+              Projects will appear here once content is added. See the README.
+            </p>
+          </Reveal>
+        ) : (
+          <Reveal delay={140}>
+            <p class="mt-4 hidden max-w-[60ch] text-ink-muted md:block">
+              Hover or focus a project to preview its details.
+            </p>
+            <div class="mt-10">
+              <ProjectBrowser projects={projects} />
+            </div>
+          </Reveal>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- 04 - Contact -->
+  <section id="contact" class="border-b border-line bg-accent-soft">
+    <div
+      class="container-x section-pad grid grid-cols-1 gap-10 md:grid-cols-12"
+    >
+      <div class="md:col-span-7">
+        <Reveal>
+          <SectionIndex index="04" label="Contact" />
+        </Reveal>
+        <Reveal delay={60}>
+          <h2 class="mt-6 text-4xl font-semibold md:text-6xl">Let’s talk</h2>
+        </Reveal>
+      </div>
+      <div class="flex flex-col justify-end gap-5 md:col-span-5">
+        <Reveal delay={120}>
+          <p class="max-w-[42ch] text-ink-muted">
+            The fastest way to reach me is through the links below.
+          </p>
+        </Reveal>
+        <Reveal delay={180}>
+          <div class="flex flex-wrap items-center gap-3">
+            {
+              site.email && (
+                <Button href={`mailto:${site.email}`}>
+                  <IconMail class="size-4" />
+                  Email me
+                </Button>
+              )
+            }
+            {
+              site.linkedin && (
+                <Button href={site.linkedin} variant="secondary" external>
+                  <IconLinkedin class="size-4" />
+                  LinkedIn
+                </Button>
+              )
+            }
+            {
+              site.github && (
+                <Button href={site.github} variant="secondary" external>
+                  <IconGithub class="size-4" />
+                  GitHub
+                </Button>
+              )
+            }
+          </div>
+        </Reveal>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

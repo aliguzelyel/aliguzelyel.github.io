@@ -1,0 +1,54 @@
+{
+  "profile": {
+    "name": "Your Name",
+    "role": "Software engineer",
+    "location": "City, Country",
+    "tagline": "One sentence that describes what you do.",
+    "description": "Meta description for search engines and social cards.",
+    "email": "you@example.com",
+    "github": "https://github.com/your-handle",
+    "linkedin": "https://www.linkedin.com/in/your-handle",
+    "facts": [
+      {
+        "label": "Based in",
+        "value": "City, Country"
+      }
+    ],
+    "education": [
+      {
+        "id": "2020-2024-example-uni",
+        "degree": "B.Sc. Example",
+        "org": "Example University",
+        "start": "2020",
+        "end": "2024"
+      }
+    ],
+    "skills": ["TypeScript", "Python"]
+  },
+  "experience": [
+    {
+      "id": "2024-acme-corp",
+      "role": "Software Engineer Intern",
+      "org": "Example Corp",
+      "start": "2024-06",
+      "end": "2024-08",
+      "location": "City, Country",
+      "bullets": ["Did something measurable.", "Shipped a feature."],
+      "tags": ["TypeScript", "API"]
+    }
+  ],
+  "projects": [
+    {
+      "title": "My Project",
+      "slug": "my-project",
+      "summary": "One-line summary shown on cards.",
+      "repo": "https://github.com/you/repo",
+      "demo": "https://example.com",
+      "date": "2025-03-01",
+      "status": "shipped",
+      "tags": ["web"],
+      "featured": true,
+      "body": "- What the project does.\n- One thing that made it interesting or hard.\n- Result, outcome or current status."
+    }
+  ]
+}

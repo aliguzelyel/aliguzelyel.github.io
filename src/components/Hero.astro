@@ -1,0 +1,111 @@
+---
+import { site } from '../data/site';
+import { portraitHref } from '../utils/assets';
+import Button from './Button.astro';
+import Reveal from './Reveal.astro';
+import SectionIndex from './SectionIndex.astro';
+import IconGithub from './icons/Github.astro';
+import IconLinkedin from './icons/Linkedin.astro';
+
+const portrait = portraitHref();
+const eyebrow = [site.role, site.location].filter(Boolean).join(' · ');
+---
+
+<section id="top" class="relative overflow-hidden border-b border-line">
+  <div
+    class="container-x grid grid-cols-1 gap-10 pb-20 pt-16 md:grid-cols-12 md:pb-28 md:pt-28"
+  >
+    <div class="md:col-span-8">
+      <Reveal>
+        <SectionIndex index="01" label="Intro" />
+      </Reveal>
+
+      <Reveal delay={60}>
+        <h1
+          class="mt-6 text-[clamp(2.75rem,7vw,4.5rem)] font-semibold leading-[1.05]"
+        >
+          {site.name}
+        </h1>
+        <div class="mt-4 h-1 w-16 bg-warm" aria-hidden="true"></div>
+      </Reveal>
+
+      <Reveal delay={120}>
+        <p
+          class="mt-6 max-w-[46ch] text-lg leading-relaxed text-ink-muted md:text-xl"
+        >
+          {site.tagline}
+        </p>
+      </Reveal>
+
+      {
+        eyebrow && (
+          <Reveal delay={160}>
+            <p class="eyebrow mt-5">{eyebrow}</p>
+          </Reveal>
+        )
+      }
+
+      <Reveal delay={220}>
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <Button href="/projects">View projects</Button>
+          <Button href="/resume" variant="secondary">Resume</Button>
+          <div class="flex items-center gap-1">
+            {
+              site.github && (
+                <a
+                  href={site.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex size-11 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-accent-soft hover:text-accent"
+                  aria-label="GitHub profile (opens in a new tab)"
+                >
+                  <IconGithub />
+                </a>
+              )
+            }
+            {
+              site.linkedin && (
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex size-11 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-accent-soft hover:text-accent"
+                  aria-label="LinkedIn profile (opens in a new tab)"
+                >
+                  <IconLinkedin />
+                </a>
+              )
+            }
+          </div>
+        </div>
+      </Reveal>
+    </div>
+
+    <div
+      class="hidden md:col-span-4 md:flex md:items-end md:justify-end parallax-y"
+    >
+      {
+        portrait ? (
+          <img
+            src={portrait}
+            alt={`${site.name}, portrait`}
+            width="480"
+            height="600"
+            loading="eager"
+            decoding="async"
+            class="w-full max-w-[18rem] rounded-xl border border-line object-cover"
+          />
+        ) : (
+          <div
+            class="flex h-72 w-full max-w-[16rem] items-center justify-center rounded-xl border border-line bg-surface"
+            aria-hidden="true"
+          >
+            <span class="eyebrow rotate-180 [writing-mode:vertical-rl]">
+              Portfolio · Selected work
+            </span>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
