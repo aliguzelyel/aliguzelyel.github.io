@@ -1,10 +1,17 @@
 ---
-title: "COVID-19 Tweets Analysis"
-summary: "End-to-end NLP pipeline categorizing Covid-19 related tweets."
+title: 'COVID-19 Tweets Analysis'
+summary: 'End-to-end NLP pipeline categorizing Covid-19 related tweets.'
 repo: https://github.com/Guz-Ali/Covid19-twitter-analysis
 date: 2022-12-01
 status: shipped
-tags: [Analytical AI, Crowdsourcing, Preprocessing, Feature Engineering, Traditional Model Training]
+tags:
+  [
+    Analytical AI,
+    Crowdsourcing,
+    Preprocessing,
+    Feature Engineering,
+    Traditional Model Training,
+  ]
 featured: true
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Fine-Tuned I/O Trace Synthesis"
-summary: "Fine-tuned an SLM with LoRA to generate synthetic scientific I/O traces."
+title: 'Fine-Tuned I/O Trace Synthesis'
+summary: 'Fine-tuned an SLM with LoRA to generate synthetic scientific I/O traces.'
 repo: https://github.com/Guz-Ali/io-trace-synth
 date: 2025-12-01
 status: shipped

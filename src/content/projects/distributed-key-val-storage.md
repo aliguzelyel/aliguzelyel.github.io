@@ -1,6 +1,6 @@
 ---
-title: "Distributed Key-Val File Storage System & Benchmarking "
-summary: "Architected a distributed file storage system with lxd containerized VMs"
+title: 'Distributed Key-Val File Storage System & Benchmarking '
+summary: 'Architected a distributed file storage system with lxd containerized VMs'
 repo: https://github.com/Guz-Ali/distributed-key-val-storage-tests
 date: 2023-12-01
 status: shipped

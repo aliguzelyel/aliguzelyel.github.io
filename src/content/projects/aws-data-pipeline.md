@@ -1,10 +1,11 @@
 ---
-title: "AWS Streaming Data Pipeline"
-summary: "Automated ML training on a streaming/batch telecom churn data using AWS components."
+title: 'AWS Streaming Data Pipeline'
+summary: 'Automated ML training on a streaming/batch telecom churn data using AWS components.'
 repo: https://github.com/Guz-Ali/AWS-Streaming-Data-to-ML-Model-Pipeline
 date: 2023-12-01
 status: shipped
-tags: [Streaming Data, Cloud AI, AWS SageMaker, AWS Kinesis, AWS Firehose, AWS S3]
+tags:
+  [Streaming Data, Cloud AI, AWS SageMaker, AWS Kinesis, AWS Firehose, AWS S3]
 featured: true
 ---
 

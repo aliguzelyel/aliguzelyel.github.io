@@ -1,6 +1,6 @@
 ---
-title: "Simple-GPT"
-summary: "Reproduced GPT-2 by pre-training on FineWeb-Edu dataset using PyTorch."
+title: 'Simple-GPT'
+summary: 'Reproduced GPT-2 by pre-training on FineWeb-Edu dataset using PyTorch.'
 repo: https://github.com/Guz-Ali/simple-gpt
 date: 2024-06-01
 status: shipped

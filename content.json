@@ -37,7 +37,16 @@
         "end": "2023"
       }
     ],
-    "skills": ["Machine Learning", "Language Models", "PyTorch", "Python", "Spring Boot", "React", "Docker", "Linux"]
+    "skills": [
+      "Machine Learning",
+      "Language Models",
+      "PyTorch",
+      "Python",
+      "Spring Boot",
+      "React",
+      "Docker",
+      "Linux"
+    ]
   },
   "experience": [
     {
@@ -48,10 +57,16 @@
       "end": null,
       "location": "Chicago, IL",
       "bullets": [
-        "Conducting causal inference and counterfactual analysis on large scale social media user behavior data.", 
+        "Conducting causal inference and counterfactual analysis on large scale social media user behavior data.",
         "Leveraging LLMs to extract user stance and linguistic signals for downstream causal modeling and simulations. (NSF-funded, in collaboration with Tulane University)"
       ],
-      "tags": ["Research", "Machine Learning", "Large Language Models", "GPU Computing", "Social Networks"]
+      "tags": [
+        "Research",
+        "Machine Learning",
+        "Large Language Models",
+        "GPU Computing",
+        "Social Networks"
+      ]
     },
     {
       "id": "airblox-swe",
@@ -61,8 +76,8 @@
       "end": "2025-07",
       "location": "Chicago, IL",
       "bullets": [
-        "Owned the end-to-end integration process with third-party flight information management systems such as Cargo AI and IBS, leading technical discussions internally and with partners to enable access to flight and cargo data from 100+ airlines globally.", 
-        "Optimized the process using in-context learning with GPT-4o for better timelines, getting faster with each integration.", 
+        "Owned the end-to-end integration process with third-party flight information management systems such as Cargo AI and IBS, leading technical discussions internally and with partners to enable access to flight and cargo data from 100+ airlines globally.",
+        "Optimized the process using in-context learning with GPT-4o for better timelines, getting faster with each integration.",
         "Developed full stack with Spring Boot, Java, React, Typescript, PostgreSQL, Docker, Colima, GitLab, and GPT."
       ],
       "tags": ["Full Stack Development", "API Integration", "Product Ownership"]
@@ -127,7 +142,14 @@
       "demo": null,
       "date": "2023-12-01",
       "status": "shipped",
-      "tags": ["Streaming Data", "Cloud AI", "AWS SageMaker", "AWS Kinesis", "AWS Firehose", "AWS S3"],
+      "tags": [
+        "Streaming Data",
+        "Cloud AI",
+        "AWS SageMaker",
+        "AWS Kinesis",
+        "AWS Firehose",
+        "AWS S3"
+      ],
       "featured": true,
       "body": "Implemented an automated ML pipeline based on AWS SageMaker, Kinesis, Firehose, and S3 to collect, compile, and pre-process streaming data and train an ML model that detects potential telecom churn with 10K+ data batches."
     },
@@ -139,7 +161,13 @@
       "demo": null,
       "date": "2022-12-01",
       "status": "shipped",
-      "tags": ["Analytical AI", "Crowdsourcing", "Preprocessing", "Feature Engineering", "Traditional Model Training"],
+      "tags": [
+        "Analytical AI",
+        "Crowdsourcing",
+        "Preprocessing",
+        "Feature Engineering",
+        "Traditional Model Training"
+      ],
       "featured": true,
       "body": "Implemented an end-to-end NLP pipeline in Python to categorize 6K+ COVID related tweets through crowdsourcing, data preprocessing, feature engineering, and model training with Cohen’s kappa, bag-of-words, and SVM."
     }
