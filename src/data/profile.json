@@ -1,26 +1,49 @@
 {
   "name": "Ali Guzelyel",
-  "role": "ML Engineer",
+  "role": "PhD Student in Computer Science",
   "location": "Chicago, IL",
-  "tagline": "PhD in computer science focused on machine learning, LLMs and large-scale data. I build ML systems end to end.",
-  "description": "Portfolio of Ali Guzelyel, ML engineer with a PhD in computer science focused on machine learning, LLMs and large-scale data.",
-  "email": null,
+  "tagline": "Studying social networks on affects of online interactions",
+  "description": "ali guzelyel, ml, phd in cs",
+  "email": "namelastname@gmail.com",
   "github": "https://github.com/Guz-Ali",
-  "linkedin": "https://www.linkedin.com/in/ali-guzelyel/",
+  "linkedin": "https://www.linkedin.com/in/ali-guzelyel",
   "facts": [
     {
       "label": "Based in",
-      "value": "Chicago, IL (open to relocate)"
-    },
-    {
-      "label": "Focus",
-      "value": "ML engineering"
-    },
-    {
-      "label": "Research",
-      "value": "Machine learning, LLMs, large-scale data"
+      "value": "Chicago, IL"
     }
   ],
-  "education": [],
-  "skills": []
+  "education": [
+    {
+      "id": "phd-uni",
+      "degree": "PhD in Computer Science",
+      "org": "Illinois Institute of Technology",
+      "start": "2025",
+      "end": null
+    },
+    {
+      "id": "ms-uni",
+      "degree": "Masters in Artificial Intelligence",
+      "org": "Illinois Institute of Technology",
+      "start": "2022",
+      "end": "2023"
+    },
+    {
+      "id": "bs-uni",
+      "degree": "Bachelors in Computer Science",
+      "org": "Illinois Institute of Technology",
+      "start": "2019",
+      "end": "2023"
+    }
+  ],
+  "skills": [
+    "Machine Learning",
+    "Language Models",
+    "PyTorch",
+    "Python",
+    "Spring Boot",
+    "React",
+    "Docker",
+    "Linux"
+  ]
 }

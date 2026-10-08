@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "id": "grad-res-assist",
+    "role": "Graduate Research Assistant",
+    "org": "Illinois Institute of Technology",
+    "start": "2025-08",
+    "end": null,
+    "location": "Chicago, IL",
+    "bullets": [
+      "Conducting causal inference and counterfactual analysis on large scale social media user behavior data.",
+      "Leveraging LLMs to extract user stance and linguistic signals for downstream causal modeling and simulations. (NSF-funded, in collaboration with Tulane University)"
+    ],
+    "tags": [
+      "Research",
+      "Machine Learning",
+      "Large Language Models",
+      "GPU Computing",
+      "Social Networks"
+    ]
+  },
+  {
+    "id": "airblox-swe",
+    "role": "Software Engineer",
+    "org": "Airblox, Inc",
+    "start": "2025-01",
+    "end": "2025-07",
+    "location": "Chicago, IL",
+    "bullets": [
+      "Owned the end-to-end integration process with third-party flight information management systems such as Cargo AI and IBS, leading technical discussions internally and with partners to enable access to flight and cargo data from 100+ airlines globally.",
+      "Optimized the process using in-context learning with GPT-4o for better timelines, getting faster with each integration.",
+      "Developed full stack with Spring Boot, Java, React, Typescript, PostgreSQL, Docker, Colima, GitLab, and GPT."
+    ],
+    "tags": [
+      "Full Stack Development",
+      "API Integration",
+      "Product Ownership"
+    ]
+  },
+  {
+    "id": "startup-ai-res",
+    "role": "Founder, AI Research Engineer",
+    "org": "AI Research Labs (startup)",
+    "start": "2024-04",
+    "end": "2025-01",
+    "location": "Chicago, IL",
+    "bullets": [
+      "Consulted Airblox to integrate Active Campaign, a Sales & CRM tool for managing deals, email notifications, and user tracking.",
+      "Launched an internship with a cohort of 5 computer science students to work on full-stack development and AI projects.",
+      "Deployed a platform for curating daily global news using News API, Gemini, Django, and a Linux based AWS-EC2 instance."
+    ],
+    "tags": [
+      "Startup",
+      "API Integration",
+      "LLM Serving"
+    ]
+  }
+]
