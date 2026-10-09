@@ -28,20 +28,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Quality gates
-        run: |
-          npm run format:check
-          npm run lint
-          npm run check
-
       - name: Build
         run: npm run build
-
-      - name: Check internal links
-        run: npm run check:links
-
-      - name: Behavioral UI tests
-        run: npm run test:ui
 
       - uses: actions/configure-pages@v5
 

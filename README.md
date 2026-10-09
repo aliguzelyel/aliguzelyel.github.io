@@ -59,8 +59,10 @@ UPDATE_VISUAL=1 npm run test:visual   # rewrite the baselines
 MAX_DIFF_PCT=0.5 npm run test:visual  # loosen tolerance (default 0.1%)
 ```
 
-Like `check:qa`, the tests need Chrome installed. CI runs `test:ui` on every
-push; the visual suite runs locally (pixel rendering differs across machines).
+Like `check:qa`, the tests need Chrome installed. CI (`.github/workflows/ci.yml`)
+runs the quality gates and `test:ui` on every push and pull request; deploys
+(`.github/workflows/deploy.yml`) build and publish without waiting for them.
+The visual suite runs locally (pixel rendering differs across machines).
 
 ## Adding content
 
@@ -112,7 +114,8 @@ tests/             # ui.test, visual.test + CDP harness; baselines in visual/bas
 ## Deploy
 
 `.github/workflows/deploy.yml` builds and publishes to GitHub Pages on every push to
-`master` (quality gates and `npm run test:ui` run in CI). The repo's
+`master` (fast path: build + deploy only). Quality gates and `npm run test:ui` run
+independently in `.github/workflows/ci.yml` on pushes and pull requests. The repo's
 **Settings → Pages → Source** must be set to
 **GitHub Actions** for the first deploy to succeed.
 
