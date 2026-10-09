@@ -8,7 +8,7 @@
     "location": "Chicago, IL",
     "bullets": [
       "Conducting causal inference and counterfactual analysis on large scale social media user behavior data.",
-      "Leveraging LLMs to extract user stance and linguistic signals for downstream causal modeling and simulations. (NSF-funded, in collaboration with Tulane University)"
+      "Leveraging LLMs to extract user stance and linguistic signals for downstream causal modeling and simulations."
     ],
     "tags": [
       "Research",
@@ -35,7 +35,7 @@
   {
     "id": "startup-ai-res",
     "role": "Founder, AI Research Engineer",
-    "org": "AI Research Labs (startup)",
+    "org": "AI Research Labs",
     "start": "2024-04",
     "end": "2025-01",
     "location": "Chicago, IL",
